@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - EduChat+</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .about-content {
+            max-width: 800px;
+            margin: 120px auto 40px;
+            padding: 2rem;
+            background-color: var(--card-background);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-content h1 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .mission-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .team-section {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .team-section p {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>EduChat+</h1>
+            </div>
+            <div class="theme-toggle">
+                <button id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about-content">
+            <h1>Sobre o EduChat+</h1>
+
+            <p>O EduChat+ é uma iniciativa educacional inovadora que nasce na Bahia com a missão de reinventar o ensino e a aprendizagem por meio da tecnologia com propósito. Somos mais do que uma plataforma: somos um movimento que une realidade aumentada, gamificação, metodologias ativas e a abordagem STEAM (Ciência, Tecnologia, Engenharia, Artes e Matemática) para transformar conteúdos escolares em experiências interativas e significativas.</p>
+
+            <p>Nosso foco está em estudantes do ensino fundamental e médio, especialmente em comunidades onde o acesso à educação de qualidade ainda é um desafio. Atuamos com um compromisso firme: educar com inovação, sem deixar ninguém para trás.</p>
+
+            <div class="mission-values">
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Inovação</h3>
+                    <p>Unimos tecnologia e educação para criar experiências de aprendizado únicas e transformadoras.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Inclusão</h3>
+                    <p>Comprometidos em levar educação de qualidade para todas as comunidades.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Colaboração</h3>
+                    <p>Construímos soluções através da escuta ativa de professores e alunos.</p>
+                </div>
+            </div>
+
+            <p>Por trás do EduChat+ está um time que acredita na educação como ferramenta de transformação social. Cada funcionalidade nasce da escuta ativa de professores e alunos, com o objetivo de tornar a escola um espaço de criatividade, protagonismo e solução de problemas reais.</p>
+
+            <div class="team-section">
+                <h2>Nossa Origem</h2>
+                <p>Acreditamos que a inovação pode surgir de qualquer lugar — e a Bahia, com sua identidade e potência cultural, é o berço ideal para esse novo capítulo da educação no Brasil.</p>
+            </div>
+
+            <p>Juntos, estamos construindo uma educação mais inclusiva, criativa e conectada com o futuro.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>EduChat+</h3>
+                <p>Transformando o futuro da educação através da tecnologia e inovação.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/educhatmaisoficial/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/educhatpagina/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> contato@educhat.com</p>
+                    <p><i class="fas fa-phone"></i> (xx) xxxx-xxxx</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Salvador, BA</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Links Úteis</h3>
+                <div class="contact-info">
+                    <p><a href="index.html">Página Inicial</a></p>
+                    <p><a href="sobre.html">Sobre Nós</a></p>
+                    <p><a href="privacidade.html">Política de Privacidade</a></p>
+                    <p><a href="termos.html">Termos de Uso</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EduChat+. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

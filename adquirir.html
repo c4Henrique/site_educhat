@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adquirir Curso - EduChat+</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .purchase-container {
+            max-width: 1200px;
+            margin: 120px auto 40px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .course-summary {
+            background: var(--card-background);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .course-summary img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .course-summary h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .course-details {
+            margin: 20px 0;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .course-details p {
+            margin: 10px 0;
+            color: var(--text-secondary);
+        }
+
+        .syllabus-list {
+            margin-top: 20px;
+        }
+
+        .syllabus-list h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .syllabus-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .syllabus-list li {
+            margin: 10px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .syllabus-list li i {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .course-price {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .payment-form {
+            background: var(--card-background);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .payment-form h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .payment-method {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            border-color: var(--primary-color);
+            background: rgba(209, 77, 202, 0.1);
+        }
+
+        .payment-method i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .payment-method.selected {
+            border-color: var(--primary-color);
+            background: rgba(209, 77, 202, 0.1);
+        }
+
+        .btn-purchase {
+            width: 100%;
+            padding: 15px;
+            background: var(--secondary-color);
+            color: var(--background-color);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-purchase:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .secure-payment {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-secondary);
+        }
+
+        .secure-payment i {
+            color: var(--secondary-color);
+            margin-right: 5px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 100px;
+            left: 20px;
+            background: var(--card-background);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            background: var(--primary-color);
+            transform: translateX(-5px);
+        }
+
+        .back-button i {
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .purchase-container {
+                grid-template-columns: 1fr;
+                margin-top: 100px;
+            }
+
+            .payment-methods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .back-button {
+                top: auto;
+                bottom: 20px;
+                left: 20px;
+                background: var(--primary-color);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>EduChat+</h1>
+            </div>
+            <div class="theme-toggle">
+                <button id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="purchase-container">
+            <div class="course-summary">
+                <img id="courseImage" src="" alt="imagem do produto">
+                <h2 id="courseTitle"></h2>
+                <p id="courseDescription"></p>
+                <div class="course-details">
+                    <p><i class="fas fa-clock"></i> Duração: <span id="courseDuration"></span></p>
+                    <p><i class="fas fa-users"></i> Alunos: <span id="courseStudents"></span></p>
+                    <p><i class="fas fa-star"></i> Avaliação: <span id="courseRating"></span></p>
+                </div>
+                <div class="course-price" id="coursePrice"></div>
+            </div>
+
+            <div class="payment-form">
+                <h2>Informações de Pagamento</h2>
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf">CPF</label>
+                        <input type="text" id="cpf" required>
+                    </div>
+
+                    <h3>Forma de Pagamento</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method" data-method="credit">
+                            <i class="fas fa-credit-card"></i>
+                            <p>Cartão de Crédito</p>
+                        </div>
+                        <div class="payment-method" data-method="pix">
+                            <i class="fas fa-qrcode"></i>
+                            <p>PIX</p>
+                        </div>
+                        <div class="payment-method" data-method="boleto">
+                            <i class="fas fa-barcode"></i>
+                            <p>Boleto</p>
+                        </div>
+                    </div>
+
+                    <div id="creditCardFields" style="display: none;">
+                        <div class="form-group">
+                            <label for="cardNumber">Número do Cartão</label>
+                            <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="cardName">Nome no Cartão</label>
+                            <input type="text" id="cardName" placeholder="Como está no cartão">
+                        </div>
+                        <div class="form-group">
+                            <label for="cardExpiry">Validade</label>
+                            <input type="text" id="cardExpiry" placeholder="MM/AA">
+                        </div>
+                        <div class="form-group">
+                            <label for="cardCvv">CVV</label>
+                            <input type="text" id="cardCvv" placeholder="123">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-purchase">Finalizar Compra</button>
+                    <p class="secure-payment">
+                        <i class="fas fa-lock"></i> Pagamento 100% Seguro
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <a href="index.html" class="back-button" title="Voltar para a página inicial">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>EduChat+</h3>
+                <p>Transformando o futuro da educação através da tecnologia e inovação.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/educhatmaisoficial/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/educhatpagina/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> contato@educhat.com</p>
+                    <p><i class="fas fa-phone"></i> (xx) xxxx-xxxx</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Salvador,BA</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Links Úteis</h3>
+                <div class="contact-info">
+                    <p><a href="sobre.html">Sobre Nós</a></p>
+                    <p><a href="privacidade.html">Política de Privacidade</a></p>
+                    <p><a href="termos.html">Termos de Uso</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EduChat+. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Course data
+        const courseData = {
+            1: {
+                title: "Kit STEAM Interativo",
+                description: "Kit completo com materiais didáticos, recursos digitais e guia de atividades para implementar projetos STEAM em sala de aula. Ideal para escolas que buscam inovação educacional.",
+                duration: "Material Físico + Digital",
+                students: "500+ escolas",
+                rating: "4.9/5",
+                price: "R$ 1.499,00",
+                syllabus: [
+                    "Materiais didáticos STEAM",
+                    "Recursos digitais interativos",
+                    "Guia de atividades práticas",
+                    "Suporte pedagógico",
+                    "Acesso à comunidade de educadores"
+                ],
+                image: "imagens/Kit STEAM Interativo.jpg"
+            },
+            2: {
+                title: "Gamificação na Sala de Aula",
+                description: "Curso completo sobre como transformar suas aulas em experiências gamificadas. Aprenda a criar sistemas de recompensas, missões e desafios que aumentam o engajamento dos alunos.",
+                duration: "40h",
+                students: "2.5k professores",
+                rating: "4.8/5",
+                price: "R$ 297,00",
+                syllabus: [
+                    "Fundamentos da gamificação",
+                    "Criação de sistemas de recompensas",
+                    "Design de missões educacionais",
+                    "Ferramentas de gamificação",
+                    "Avaliação e feedback"
+                ],
+                image: "imagens/Gamificação na Sala de Aula.jpg"
+            },
+            3: {
+                title: "Design de Experiências Educacionais",
+                description: "Aprenda a criar interfaces e experiências de aprendizado intuitivas e envolventes. Desenvolva materiais didáticos digitais que maximizam o engajamento dos alunos.",
+                duration: "35h",
+                students: "1.5k educadores",
+                rating: "4.8/5",
+                price: "R$ 397,00",
+                syllabus: [
+                    "Princípios de design educacional",
+                    "Criação de materiais didáticos digitais",
+                    "Design de interfaces educativas",
+                    "Prototipagem de experiências de aprendizado",
+                    "Avaliação de usabilidade educacional"
+                ],
+                image: "imagens/Design de Experiências Educacionais.jpg"
+            },
+            4: {
+                title: "E-book 'Educação do Futuro'",
+                description: "Guia completo sobre as tendências e inovações na educação do século XXI. Inclui casos de sucesso, metodologias ativas e estratégias para transformação digital na educação.",
+                duration: "200 páginas",
+                students: "PDF + Áudio",
+                rating: "4.7/5",
+                price: "R$ 47,00",
+                syllabus: [
+                    "Tendências educacionais",
+                    "Metodologias ativas",
+                    "Transformação digital na educação",
+                    "Casos de sucesso",
+                    "Estratégias de implementação"
+                ],
+                image: "imagens/E-book 'Educação do Futuro'.jpg"
+            },
+            5: {
+                title: "Workshop Escola Criativa",
+                description: "Workshop presencial para transformar sua escola em um ambiente inovador. Inclui diagnóstico, planejamento e implementação de práticas pedagógicas inovadoras.",
+                duration: "8h",
+                students: "Presencial",
+                rating: "4.9/5",
+                price: "R$ 997,00",
+                syllabus: [
+                    "Diagnóstico da escola",
+                    "Planejamento de inovação",
+                    "Implementação de práticas inovadoras",
+                    "Gestão da mudança",
+                    "Avaliação de resultados"
+                ],
+                image: "imagens/Workshop Escola Criativa.jpg"
+            }
+        };
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            themeToggle.querySelector('i').classList.toggle('fa-moon');
+            themeToggle.querySelector('i').classList.toggle('fa-sun');
+        });
+
+        // Get course data from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const courseId = urlParams.get('id');
+
+        // Update course information
+        if (courseId && courseData[courseId]) {
+            const course = courseData[courseId];
+            document.getElementById('courseImage').src = course.image || `https://source.unsplash.com/random/400x300?${course.title.toLowerCase().replace(/\s+/g, '')}`;
+            document.getElementById('courseTitle').textContent = course.title;
+            document.getElementById('courseDescription').textContent = course.description;
+            document.getElementById('courseDuration').textContent = course.duration;
+            document.getElementById('courseStudents').textContent = course.students;
+            document.getElementById('courseRating').textContent = course.rating;
+            document.getElementById('coursePrice').textContent = course.price;
+
+            // Adicionar lista de conteúdo do curso
+            const courseDetails = document.querySelector('.course-details');
+            const syllabusList = document.createElement('div');
+            syllabusList.className = 'syllabus-list';
+            syllabusList.innerHTML = `
+                <h3>Conteúdo do Curso</h3>
+                <ul>
+                    ${course.syllabus.map(item => `<li><i class="fas fa-check"></i> ${item}</li>`).join('')}
+                </ul>
+            `;
+            courseDetails.appendChild(syllabusList);
+        } else {
+            // Redirecionar para a página inicial se o curso não for encontrado
+            window.location.href = 'index.html';
+        }
+
+        // Payment method selection
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        const creditCardFields = document.getElementById('creditCardFields');
+
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', () => {
+                paymentMethods.forEach(m => m.classList.remove('selected'));
+                method.classList.add('selected');
+                
+                if (method.dataset.method === 'credit') {
+                    creditCardFields.style.display = 'block';
+                } else {
+                    creditCardFields.style.display = 'none';
+                }
+            });
+        });
+
+        // Form submission
+        const paymentForm = document.getElementById('paymentForm');
+        paymentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Aqui você implementaria a lógica de processamento do pagamento
+            alert('Obrigado pela sua compra! Você receberá um e-mail com os detalhes do curso.');
+            window.location.href = 'index.html';
+        });
+
+        // Máscaras para os campos
+        const cpfInput = document.getElementById('cpf');
+        const cardNumberInput = document.getElementById('cardNumber');
+        const cardExpiryInput = document.getElementById('cardExpiry');
+        const cardCvvInput = document.getElementById('cardCvv');
+
+        // Máscara para CPF
+        cpfInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+                e.target.value = value;
+            }
+        });
+
+        // Máscara para número do cartão
+        cardNumberInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 16) {
+                value = value.replace(/(\d{4})(\d{4})(\d{4})(\d{4})/, '$1 $2 $3 $4');
+                e.target.value = value;
+            }
+        });
+
+        // Máscara para validade
+        cardExpiryInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 4) {
+                value = value.replace(/(\d{2})(\d{2})/, '$1/$2');
+                e.target.value = value;
+            }
+        });
+
+        // Máscara para CVV
+        cardCvvInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 3) {
+                e.target.value = value;
+            }
+        });
+    </script>
+</body>
+</html> 
