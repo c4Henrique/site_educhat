@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // Observe all cards
-    const cards = document.querySelectorAll('.mvv-card, .equipe-card, .diferencial-card, .testimonial-card');
+    const cards = document.querySelectorAll('.mvv-card, .equipe-card, .diferencial-card, .testimonial-card, .produto-card');
     cards.forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
